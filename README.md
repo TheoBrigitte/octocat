@@ -1,3 +1,6 @@
+[![GoDoc](https://godoc.org/github.com/TheoBrigitte/octocat?status.svg)](https://godoc.org/github.com/TheoBrigitte/octocat)
+[![Go Report Card](https://goreportcard.com/badge/github.com/TheoBrigitte/octocat)](https://goreportcard.com/report/github.com/TheoBrigitte/octocat)
+
 # Octocat
 
 Octocat is a content scrapper for [budgetparticipatif.paris.fr](https://budgetparticipatif.paris.fr/).
