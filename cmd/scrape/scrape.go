@@ -30,12 +30,20 @@ var (
 	searchPath   = flag.String("searchPath", "jsp/site/Portal.jsp?page=search-solr&conf=list_idees", "relative path to the search page")
 )
 
+func pause() {
+	fmt.Println("bye")
+	fmt.Scanln()
+}
+
 func main() {
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage of %s:\nExtract projects data from budgetparticipatif.paris.fr and store them into a file.\n\n", os.Args[0])
 		flag.PrintDefaults()
 	}
 	flag.Parse()
+
+	log.RegisterExitHandler(pause)
+	defer pause()
 
 	var (
 		storageChan = make(chan interface{})
