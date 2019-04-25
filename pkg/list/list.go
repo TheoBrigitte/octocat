@@ -61,10 +61,10 @@ func (l *List) Fetch() ([]*url.URL, error) {
 	l.searchPath.RawQuery = q.Encode()
 
 	res, err := l.httpClient.Get(l.searchPath.String())
-	defer res.Body.Close()
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	return l.process(res.Body)
 }
