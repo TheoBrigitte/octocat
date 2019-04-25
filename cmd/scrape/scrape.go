@@ -58,7 +58,7 @@ func main() {
 		if *logFile != "stdout" {
 			file, err := os.OpenFile(*logFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 			if err != nil {
-				log.Fatal("log: os.OpenFile: %v", err)
+				log.Fatalf("log: os.OpenFile: %v", err)
 			}
 			defer file.Close()
 			logOutput = file
