@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/TheoBrigitte/octocat/pkg/httputil"
@@ -24,7 +25,7 @@ var (
 	limit        = flag.Int("limit", -1, "limit of projects to fetch")
 	logFile      = flag.String("log", "stdout", "log file")
 	itemsPerPage = flag.Int("pagination", 100, "number of item per page")
-	outputFile   = flag.String("o", "output", "output file")
+	outputFile   = flag.String("o", "", "output file")
 	outputType   = flag.String("type", "json", "output file type")
 	searchPath   = flag.String("searchPath", "jsp/site/Portal.jsp?page=search-solr&conf=list_idees", "relative path to the search page")
 )
@@ -92,6 +93,15 @@ func main() {
 
 	var s storage.Storage
 	{
+		if *outputFile == "" {
+			path, err := os.Executable()
+			if err != nil {
+				log.Fatal(err)
+			}
+			dir := filepath.Dir(path)
+			*outputFile = dir + "/octocat_output_" + time.Now().Format("2006-01-02T15-04-05") + "." + *outputType
+		}
+
 		_, err := os.Stat(*outputFile)
 		if err == nil {
 			log.Fatalf("file %v already exist", *outputFile)
