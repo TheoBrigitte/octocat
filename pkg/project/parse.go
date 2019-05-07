@@ -149,7 +149,7 @@ func (p *Project) parseCreation(doc *goquery.Document) error {
 	if err != nil {
 		return fmt.Errorf("parseCreation: %v : %s", err, matches[1])
 	}
-	c := creation{Date: date}
+	c := Creation{Date: date}
 
 	if len(matches) >= 3 {
 		c.Author = matches[2]
@@ -201,7 +201,7 @@ func (p *Project) parseComment(doc *goquery.Document) (mainErr error) {
 		text := strings.TrimSpace(doc.Find(commentTextSelector).Text())
 		text = regexp.MustCompile(commentCleanPattern).ReplaceAllString(text, "\n")
 
-		p.Comment = append(p.Comment, comment{author, date, text})
+		p.Comment = append(p.Comment, Comment{author, date, text})
 		return true
 	})
 

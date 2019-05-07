@@ -25,9 +25,9 @@ func (p Project) MarshalJSON() ([]byte, error) {
 		Status       string    `json:"status"`
 		Cost         int       `json:"cost"`
 		Author       string    `json:"author"`
-		Creation     creation  `json:"creation"`
+		Creation     Creation  `json:"creation"`
 		Attachement  []string  `json:"attachement"`
-		Comment      []comment `json:"comment"`
+		Comment      []Comment `json:"comment"`
 	}{
 		Title:        p.Title,
 		URL:          p.URL.String(),

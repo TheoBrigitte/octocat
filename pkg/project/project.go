@@ -12,13 +12,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type comment struct {
+type Comment struct {
 	Author string    `json:"author"`
 	Date   time.Time `json:"date"`
 	Text   string    `json:"text"`
 }
 
-type creation struct {
+type Creation struct {
 	Author string    `json:"author"`
 	Date   time.Time `json:"date"`
 }
@@ -47,9 +47,9 @@ type Project struct {
 	Status       string     `json:"status"`
 	Cost         int        `json:"cost"`
 	Author       string     `json:"author"`
-	Creation     creation   `json:"creation"`
+	Creation     Creation   `json:"creation"`
 	Attachement  []*url.URL `json:"attachement"`
-	Comment      []comment  `json:"comment"`
+	Comment      []Comment  `json:"comment"`
 }
 
 // New creates a new Project.
